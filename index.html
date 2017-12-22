@@ -1,0 +1,47 @@
+		<!DOCTYPE html><html><head><title>Page Title</title>
+		<script>
+		var greekNames= ["Alpha","Beta","Gamma","Delta","Epsilon","Zeta","Eta","Theta","Iota","Kappa","Lambda","Mu","Nu","Xi","Omicron","Pi","Rho","Sigma","Tau","Upsilon","Phi","Chi","Psi","Omega"];
+		var greekLetters = ["ά","β","γ","δ","έ","ζ","ή","θ","ι","κ","λ","μ","ν","ξ","ό","π","ρ","σ","τ","ύ","φ","χ","ψ","ω"];
+		var animalsEnglish = ["Albatross","Alligator","Ant","Antelope","Baboon","Badger","Bat","Bear","Beaver","Bee","Bird","Boar","Butterfly","Cat","Catfish","Chameleon","Chipmunk","Cobra","Cow","Crab","Crane","Crow","Deer","Dog","Donkey","Dove","Dragon","Dragonfly","Duck","Eagle","Elephant","Flamingo","Fox","Frog","Gazelle","Gecko","Gerbil","Goat","Goose","Hare","Hawk","Hedgehog","Hippo","Horse","Hummingbird","Hyena","Ibis","Jackal","Kangaroo","Lemur","Leopard","Lion","Lizard","Lobster","Lynx","Macaw","Monkey","Mouse","Mule","Ocelot","Ostrich","Otter","Owl","Ox","Parror","Pelican","Pheasant","Pig","Pigeon","Porcupine","Rabbit","Raven","Rhino","Salmon","Seagull","Seal","Serpent","Shark","Sheep","Snake","Sparrow","Spider","Squirrel","Starfish","Stork","Swallow","Swan","Tapir","Tiger","Turtle","Vulture","Wasp","Whale","Wolf"];
+		var animalsLatin =["Albus Kados","Lacertus","Formica","Oryx Illaqueatus","Papio","Melis","Vespertilio","Ursa","Castori Concedite","Apes","Avem","Aper","Gloria","Cattus","Silurus","Sacrorum","Cellariarius","Colubra","Uaccam","Cancer","Cicero","Corvus","Cervus","Canis","Asinus","Columba","Draco","Draco Volant","Mea","Aquila","Elephantus","Atropurpureum","Vulpes","Rana","Silvis","Stilio","Rodentia","Capra","Anser","Lepus","Accipiter","Erinaceus","Serm","Equus","Hummingbird","Hyaenis","Ibis","Fontem Draconis","Macropus","Lemurem","Pardus","Leo","Lacerta","Cammarus","Lynx","Mascarene","Simia","Mus","Adonias","Ocelot","Ptilium","Lutra","Noctua","Bovi","Parror","Pellicane","Phasianum","Porcus","Columbam","Absentia","Lepus","Corvus","Warner","Salmo","Larus","Phoca","Serpenti","Pistris","Ovium","Anguis","Passer","Aranea","Sciurus","Maris Stella","Ciconia","Hirundo","Olor","Tapir","Tigris","Testudo","Vulturius","Vespa","Balena","Lupus"];
+		var prefixEnglish = ["Major", "Minor", "Big","Small","Southern","Northern","Western","Eastern","Tiny","Large","Flying",""];
+		var prefixLatin = ["Maior", "Minor", "Magnum", "Parvus", "Australis", "Borealis","Occidentalis","Orientalis", "Minima", "Magna", "Volantes", ""];
+		var thingsEnglish = ["Altar","Anvil","Archer","Arrow","Axe","Book","Boulder","Bridge","Broom","Brush","Candle","Cart","Castle","Chair","Chest","Chisel","Claw","Clock","Compass","Cone","Couldron","Cross","Crown","Cup","Dagger","Diamond","Droplet","Drum","Eye","Feather","Fire","Flag","Flame","Flower","Flute","Fork","Fountain","Furnace","Gate","Gem","Hammer","Hat","Hatchet","Heart","Helmet","Hooves","Horn","Hourglass","House","Knife","Knight","Lance","Lantern","Leaf","Light","Maze","Mountain","Needle","Petal","Pickaxe","Pipe","Pyramid","Ring","River","River","Robe","Rod","Sapling","Scarf","Scepter","Screw","Scroll","Shell","Shield","Ship","Skull","Soldier","Spade","Spear","Spoon","Sword","Table","Temple","Throne","Tooth","Torch","Tower","Tree","Triangle","Vase","Wave","Wheel","Wing"];
+		var thingsLatin = ["Altaris","Incus","Sagittarius","Sagitta","Ferrum","Liber","Scopulus","Pontem","Scopae","Peniculus","Lucerna","Plaustrum","Arce","Cathedra","Pectus","Ccalprum","Capsule","Horologium","Circuitus","Conus","Couldron","Crucis","Coronam","Calix","Pugione","Adamas","Guttula","Tympanum","Oculus","Pluma","Ignis","Vexillum","Flamma","Flos","Gloria","Furca","fons","Fornacem","Porta","Gemma","Malleus","Galerum","Ascia","Cordis","Galeam","Ungula","Cornu","Clepsydra","Domum","Cultro","Miues","Lancea","Lumina","Folium","Lux","Miserere","Mons","Acus","Laminae","Dolabra","Tibia","Pyramidis","circulum","Flumen","Flumen","Tunicae","Virga","Surculus","Fascia","Sceptrum","Stupra","Volumen","Crusta","Clypeus","Navis","Calvaria","Militus","Ligonem","Hastam","Dicula","Gladio","Mensa","Templum","Throni","Dente","Facem","Turrim","Arbor","Triangulum","Vase","Fluctus","Rotam","Wing"];
+					
+		function nameGen(){
+			var br = "";
+			var div = document.createElement("div");
+			div.setAttribute("id", "result");
+			
+			for(i = 0; i < 25; i++){
+
+					greek = Math.floor(Math.random() * greekNames.length);
+					animals = Math.floor(Math.random() * animalsLatin.length);
+					things = Math.floor(Math.random() * thingsLatin.length);
+					if (Math.random()<0.15) {
+						prefix = Math.floor(Math.random() * (prefixLatin.length - 2) );
+					} else {
+						prefix = prefixLatin.length-1;
+					}
+					if (Math.random() > 0.5) {
+						names = greekNames[greek] + "("+ greekLetters[greek]+") " + animalsLatin[animals] + " " + prefixLatin[prefix]+ " from the constellation The " + prefixEnglish[prefix] + " " + animalsEnglish[animals];
+
+					} else {
+						names = greekNames[greek] + "("+ greekLetters[greek]+") " + thingsLatin[things] + " " + prefixLatin[prefix]+ " from the constellation The " + prefixEnglish[prefix] + " " + thingsEnglish[things];
+					}
+				br = document.createElement('br');	
+				div.appendChild(document.createTextNode(names));
+				div.appendChild(br);
+				}
+				if(document.getElementById("result")){
+					document.getElementById("placeholder").removeChild(document.getElementById("result"));
+				}		
+				document.getElementById("placeholder").appendChild(div);
+		}
+		</script>
+		</head><body><div id="placeholder"></div>
+		<script>
+		nameGen();
+		</script>
+		</body></html>
