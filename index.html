@@ -75,7 +75,6 @@
       var canvasSize;
       var invertColours;
 
-      let starColor;
 
       function setup() {
         inpSeed = document.getElementById("inpseed");
@@ -306,8 +305,11 @@
         let cart = stereographicToCartesian(this.phi, this.theta);
         this.x = cart.x;
         this.y = cart.y;
-        this.starColor = color(0, 0, 0);
-        this.invertedColor = color(255 - this.starColor.levels[0], 255 - this.starColor.levels[1], 255 - this.starColor.levels[2]);
+        if (INVERTED_COLOURS){
+          this.color = color(0,0,0);
+        }else{
+          this.color = color(255,255,255);
+        }
       }
 
 
