@@ -122,7 +122,7 @@
         for(let star of stars){
           noStroke();
           fill(star.color);
-          circle(this.x * width / 2, this.y * height / 2, star.luminosity * LUMINOSITY_MULTIPLIER);
+          circle(star.x * width / 2, star.y * height / 2, star.luminosity * LUMINOSITY_MULTIPLIER);
 
           // star.show(star.luminosity, star.color);
         }
