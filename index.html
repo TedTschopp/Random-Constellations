@@ -150,7 +150,8 @@
           ellipse(0, 0, width-1, height-1);
         }
         for(let star of stars){
-          fill(star.color);
+          let c = star.color;
+          fill(c);
           star.show();
         }
         for(let constellation of constellations){
