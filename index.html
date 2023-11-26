@@ -120,9 +120,7 @@
           ellipse(0, 0, width-1, height-1);
         }
         for(let star of stars){
-          let c = star.color;
-          fill(c);
-          circle(this.x * width / 2, this.y * height / 2, this.luminosity * LUMINOSITY_MULTIPLIER);
+          star.show();
         }
         for(let constellation of constellations){
           constellation.show();
@@ -327,6 +325,8 @@
       }
 
       Star.prototype.show = function(){
+        fill(this.color);
+        circle(this.x * width / 2, this.y * height / 2, this.luminosity * LUMINOSITY_MULTIPLIER);
       }
 
       Star.prototype.angleTo = function(other){
