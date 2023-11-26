@@ -304,8 +304,8 @@
         let cart = stereographicToCartesian(this.phi, this.theta);
         this.x = cart.x;
         this.y = cart.y;
-        this.color = color(0,0,0);
-        this.invertedColor = color(255 - this.color.levels[0], 255 - this.color.levels[1], 255 - this.color.levels[2]);
+        this.starColor = color(0,0,0);
+        this.invertedColor = color(255 - this.starColor.levels[0], 255 - this.starColor.levels[1], 255 - this.starColor.levels[2]);
       }
 
 
@@ -328,7 +328,7 @@
         if (INVERTED_COLOURS){
           stroke(this.invertedColor);
         }else{
-          stroke(this.color);
+          stroke(this.starColor);
         }
         strokeWeight(this.luminosity * LUMINOSITY_MULTIPLIER);
         point(this.x * width / 2, this.y * height / 2);
