@@ -324,8 +324,7 @@
       while (v === 0) v = Math.random();
       let num = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
       num = num * stdDev + mean; // Translate to desired mean and standard deviation
-      console.log(num);
-      return parseInt(num);
+      return num;
     }
 
       Star.prototype.show = function(){
