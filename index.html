@@ -313,7 +313,6 @@
       }
 
 
-
     function getRandomColor(c, c1) {
       var color = Math.floor(Math.random() * (c1 - c + 1)) + c;
       return color;
@@ -359,7 +358,7 @@
         phi = acos(2*v-1);
         theta = TWO_PI * u;
         var stdDev = 0.0825;
-        code = random(0, 99);
+        var code = random(0, 99);
         switch (code) {
             case 0:
               var specialCode = random(1, 10);
@@ -432,8 +431,8 @@
                 RBG2 = (255, 69, 0);
                 return 'Class M - Red';*/
           }
-          s = new Star(phi, theta, luminosity);
-          s.color = color;
+        s = new Star(phi, theta, luminosity);
+        s.color = color;
         return s;
       }
 
