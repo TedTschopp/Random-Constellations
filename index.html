@@ -52,7 +52,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/p5@1.8.0/lib/p5.js"></script>
     <script>
-      const LUMINOSITY_MULTIPLIER = 3;
+      const LUMINOSITY_MULTIPLIER = 5;
 
 
       var CANVAS_SIZE = 500;
@@ -329,9 +329,8 @@
 
       Star.prototype.show = function(){
         strokeWeight(0.5);
-        fill(this.color );
+        fill(this.color);
         circle(this.x * width / 2, this.y * height / 2, this.luminosity * LUMINOSITY_MULTIPLIER);
-        
       }
 
       Star.prototype.angleTo = function(other){
