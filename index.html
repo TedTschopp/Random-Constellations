@@ -328,11 +328,7 @@
     }
 
       Star.prototype.show = function(){
-        if (INVERTED_COLOURS){
-          stroke(this.invertedColor);
-        }else{
-          stroke(this.starColor);
-        }
+        stroke(this.color);
         strokeWeight(this.luminosity * LUMINOSITY_MULTIPLIER);
         point(this.x * width / 2, this.y * height / 2);
       }
