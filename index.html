@@ -52,7 +52,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/p5@1.8.0/lib/p5.js"></script>
     <script>
-      const LUMINOSITY_MULTIPLIER = 2;
+      const LUMINOSITY_MULTIPLIER = 10;
 
 
       var CANVAS_SIZE = 500;
@@ -466,6 +466,7 @@
       }
 
       Constellation.prototype.show = function(){
+        stroke(255, 255, 255);
         strokeWeight(0.5);
         for (let edge of this.edges){
           line(edge[0].x*width/2, edge[0].y*height/2, edge[1].x*width/2, edge[1].y*height/2);
