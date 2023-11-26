@@ -328,9 +328,10 @@
     }
 
       Star.prototype.show = function(){
-        stroke(this.color);
-        strokeWeight(this.luminosity * LUMINOSITY_MULTIPLIER);
-        point(this.x * width / 2, this.y * height / 2);
+        strokeWeight(0.5);
+        fill(this.color );
+        circle(this.x * width / 2, this.y * height / 2, this.luminosity * LUMINOSITY_MULTIPLIER);
+        
       }
 
       Star.prototype.angleTo = function(other){
@@ -455,8 +456,6 @@
           }
         s = new Star(phi, theta, luminosity);
         s.color = color(red, green, blue);
-        console.log("red = "+red+" green = "+green+" blue = "+blue);
-        console.log(s);
         return s;
       }
 
