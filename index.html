@@ -120,10 +120,23 @@
           ellipse(0, 0, width-1, height-1);
         }
         for(let star of stars){
-          star.show(star.luminosity, star.color);
+          noStroke();
+          fill(star.color);
+          circle(this.x * width / 2, this.y * height / 2, star.luminosity * LUMINOSITY_MULTIPLIER);
+
+          // star.show(star.luminosity, star.color);
         }
         for(let constellation of constellations){
-          constellation.show();
+
+          stroke(255, 255, 255);
+          strokeWeight(0.5);
+          strokeJoin(MITER);
+          strokeCap(ROUND);
+          for (let edge of constellation.edges){
+            line(edge[0].x*width/2, edge[0].y*height/2, edge[1].x*width/2, edge[1].y*height/2);
+          }
+
+          //constellation.show();
         }
       }
 
