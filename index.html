@@ -305,31 +305,32 @@
         let cart = stereographicToCartesian(this.phi, this.theta);
         this.x = cart.x;
         this.y = cart.y;
-        if (INVERTED_COLOURS){
-          this.color = color(0,0,0);
-        }else{
-          this.color = color(255,255,255);
-        }
+        this.color = color(0,0,0);
+        this.invertedColor = color(255 - this.color.levels[0], 255 - this.color.levels[1], 255 - this.color.levels[2]);
       }
 
-      /**
-       * This function calculates the inverted RGB color.
-       * @param {number} r - The red component of the color.
-       * @param {number} g - The green component of the color.
-       * @param {number} b - The blue component of the color.
-       * @returns {Array} An array containing the inverted RGB color.
 
-       let r = 0, g = 0, b = 0; // replace with your actual RGB values
-      let invertedColor = invertColor(r, g, b);
-      this.color = color(invertedColor[0], invertedColor[1], invertedColor[2]);
 
-       */
-      function invertColor(r, g, b) {
-          return [255 - r, 255 - g, 255 - b];
-      }
+    function getRandomColor(c, c1) {
+      var color = Math.floor(Math.random() * (c1 - c + 1)) + c;
+      return color;
+    }
+
+    function getRandomNormal(mean, stdDev) {
+      let u = 0, v = 0;
+      while (u === 0) u = Math.random(); //Converting [0,1) to (0,1)
+      while (v === 0) v = Math.random();
+      let num = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+      num = num * stdDev + mean; // Translate to desired mean and standard deviation
+      return num;
+    }
 
       Star.prototype.show = function(){
-        stroke(this.color);
+        if (INVERTED_COLOURS){
+          stroke(this.invertedColor);
+        }else{
+          stroke(this.color);
+        }
         strokeWeight(this.luminosity * LUMINOSITY_MULTIPLIER);
         point(this.x * width / 2, this.y * height / 2);
       }
@@ -354,9 +355,82 @@
         v = random(0.5); //0-0.5: above horizon, 0.5-1 below horizon
         phi = acos(2*v-1);
         theta = TWO_PI * u;
-        luminosity = random();
-        s = new Star(phi, theta, luminosity);
-        //s.color = color(random(255), random(255), random(255));
+        var stdDev = 0.0825;
+        code = random(0, 99);
+        switch (code) {
+            case 0:
+              var specialCode = random(1, 10);
+              switch (specialCode) {
+                  case 1: case 2: case 3: case 4: case 5:
+                      luminosity = getRandomNormal(.75, stdDev);
+                      color = color(getRandomColor(255,255), getRandomColor(0,69), getRandomColor(0,0));
+                      /* RBG1 = (255, 0, 0); 
+                      RBG2 = (255, 69, 0);
+                      return 'Class K or M Giant Red or Orange';*/
+                  case 6:
+                      luminosity = getRandomNormal(.75, stdDev);
+                      color = color(getRandomColor(255,255), getRandomColor(0,69), getRandomColor(0,0));
+                      /* RBG1 = (255, 0, 0);
+                      RBG2 = (255, 69, 0);
+                      return 'Class M Red Supergiant Dull Read';*/
+                  case 7: case 8:
+                      luminosity = getRandomNormal(.75, stdDev);
+                      color = color(getRandomColor(202,224), getRandomColor(215,233), getRandomColor(255,255));
+                      /* RBG1 = (202, 215, 255);
+                      RBG2 = (224, 233, 255);
+                      return 'Class B Blue Giant Bright Blue';*/
+                  case 9:
+                      luminosity = getRandomNormal(.75, stdDev);
+                      color = color(getRandomColor(0,155), getRandomColor(0,176), getRandomColor(255,255));
+                      /* RBG1 = (0, 0, 255);
+                      RBG2 = (155, 176, 255);
+                      return 'Class O Blue Supergiant Bright Blue';*/
+                  case 10:
+                      luminosity = getRandomNormal(.25, stdDev);
+                      color = color(getRandomColor(0,155), getRandomColor(0,176), getRandomColor(255,255));
+                      /* RBG1 = (0, 0, 255);
+                      RBG2 = (155, 176, 255);
+                      return 'Neutron Star deep Blue to Violet';*/
+            }
+            case 1: case 2: case 3: case 4: case 5: case 6: case 7: case 8: case 9:
+                luminosity = getRandomNormal(.25, stdDev);
+                color = color(getRandomColor(202,255), getRandomColor(225,255), getRandomColor(255,255));
+                /* RBG1 = (202, 225, 255);
+                RBG2 = (255, 255, 255);
+                return 'White Dwarf';*/
+            case 10:
+                luminosity= getRandomNormal(.5, stdDev);
+                color = color(getRandomColor(202,255), getRandomColor(215,255), getRandomColor(255,255));
+                /* RBG1 = (202, 215, 255);
+                RBG2 = (255, 255, 255);
+                return 'Class A - Bright Blue-White';*/
+            case 11: case 12: case 13:
+                luminosity = getRandomNormal(.5, stdDev);
+                color = color(getRandomColor(255,255), getRandomColor(249,255), getRandomColor(224,255));
+                /* RBG1 = (255, 249, 224);
+                RBG2 = (255, 255, 255);
+                return 'Class F - White';*/
+            case 14: case 15: case 16: case 17: case 18: case 19: case 20:
+                luminosity = getRandomNormal(.5, stdDev);
+                color = color(getRandomColor(255,255), getRandomColor(247,255), getRandomColor(0,200));
+                /* RBG1 = (255, 255, 0);
+                RBG2 = (255, 247, 200);
+                return 'Class G - Yellow';*/
+            case 21: case 22: case 23: case 24: case 25: case 26: case 27: case 28: case 29: case 30: case 31: case 32: case 33:
+                luminosity = getRandomNormal(.5, stdDev);
+                color = color(getRandomColor(255,255), getRandomColor(165,223), getRandomColor(0,186));
+                /* RBG1 = (255, 165, 0);
+                RBG2 = (255, 223, 186);
+                return 'Class K - Orange';*/
+            default:
+                luminosity = getRandomNormal(.5, stdDev);
+                color = color(getRandomColor(255,255), getRandomColor(0,69), getRandomColor(0,0));
+                /* RBG1 = (255, 0, 0);
+                RBG2 = (255, 69, 0);
+                return 'Class M - Red';*/
+          }
+          s = new Star(phi, theta, luminosity);
+          s.color = color;
         return s;
       }
 
