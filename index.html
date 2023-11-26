@@ -120,11 +120,8 @@
           ellipse(0, 0, width-1, height-1);
         }
         for(let star of stars){
-          /* strokeWeight(0.5);*/
-
           let c = star.color;
           fill(c);
-
           circle(this.x * width / 2, this.y * height / 2, this.luminosity * LUMINOSITY_MULTIPLIER);
         }
         for(let constellation of constellations){
