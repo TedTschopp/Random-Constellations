@@ -317,6 +317,7 @@
         let cart = stereographicToCartesian(this.phi, this.theta);
         this.x = cart.x;
         this.y = cart.y;
+        this.color = color(255,255,255);
         if (INVERTED_COLOURS){
           this.color = color(0, 0, 0);
         }else{
