@@ -310,6 +310,9 @@
       }
 
       function Star(phi, theta, luminosity){
+        this.name="default";
+        this.className="default";
+        this.colorName="default";
         this.phi = phi;
         this.theta = theta;
         this.luminosity = luminosity;
@@ -317,7 +320,6 @@
         let cart = stereographicToCartesian(this.phi, this.theta);
         this.x = cart.x;
         this.y = cart.y;
-        this.color = color(255,255,255);
         if (INVERTED_COLOURS){
           this.color = color(0, 0, 0);
         }else{
@@ -381,6 +383,8 @@
                       blue = getRandomColor(0,0);
                       /* RBG1 = (255, 0, 0); 
                       RBG2 = (255, 69, 0);*/
+                      className = "Class K or M Giant";
+                      colorName = "Red to Orange";
                       console.log('Class K or M Giant Red or Orange');
                   case 6:
                       luminosity = getRandomNormal(.75, stdDev);
@@ -389,12 +393,16 @@
                       blue = getRandomColor(0,0);
                       /* RBG1 = (255, 0, 0);
                       RBG2 = (255, 69, 0);*/
-                      console.log('Class M Red Supergiant Dull Read');
+                      className = "Class M Supergiant";
+                      colorName = "Red to Dull Red";
+                      console.log('Class M Red Supergiant Dull Red');
                   case 7: case 8:
                       luminosity = getRandomNormal(.75, stdDev);
                       red = getRandomColor(202,224);
                       green = getRandomColor(215,233);
                       blue = getRandomColor(255,255);
+                      className = "Class B Giant";
+                      colorName = "Bright Blue";
                       /* RBG1 = (202, 215, 255);
                       RBG2 = (224, 233, 255);*/
                       console.log('Class B Blue Giant Bright Blue');
@@ -403,6 +411,8 @@
                       red = getRandomColor(0,155);
                       green = getRandomColor(0,176);
                       blue = getRandomColor(255,255);
+                      className = "Class O Supergiant";
+                      colorName = "Bright Blue";
                       /* RBG1 = (0, 0, 255);
                       RBG2 = (155, 176, 255);*/
                       console.log('Class O Blue Supergiant Bright Blue');
@@ -411,6 +421,8 @@
                       red = getRandomColor(0,155);
                       green = getRandomColor(0,176);
                       blue = getRandomColor(255,255);
+                      className = "Neutron Star";
+                      colorName = "Deep Blue to Violet";
                       /* RBG1 = (0, 0, 255);
                       RBG2 = (155, 176, 255);*/
                       console.log('Neutron Star deep Blue to Violet');
@@ -420,6 +432,8 @@
                 red = getRandomColor(202,255);
                 green = getRandomColor(225,255);
                 blue = getRandomColor(255,255);
+                className = "White Dwarf";
+                colorName = "White to Blue-White";
                 /* RBG1 = (202, 225, 255);
                 RBG2 = (255, 255, 255);*/
                 console.log('White Dwarf');
@@ -428,6 +442,8 @@
                 red =  getRandomColor(202,255);
                 green = getRandomColor(215,255);
                 blue = getRandomColor(255,255);
+                className = "Class A";
+                colorName = "Bright Blue-White";
                 /* RBG1 = (202, 215, 255);
                 RBG2 = (255, 255, 255);*/
                 console.log('Class A - Bright Blue-White');
@@ -436,6 +452,8 @@
                 red = getRandomColor(255,255);
                 green = getRandomColor(249,255);
                 blue = getRandomColor(224,255);
+                className = "Class F";
+                colorName = "White";
                 /* RBG1 = (255, 249, 224);
                 RBG2 = (255, 255, 255);*/
                 console.log('Class F - White');
@@ -444,6 +462,8 @@
                 red = getRandomColor(255,255);
                 green = getRandomColor(247,255);
                 blue = getRandomColor(0,200);
+                className = "Class G";
+                colorName = "Yellow";
                 /* RBG1 = (255, 255, 0);
                 RBG2 = (255, 247, 200);*/
                 console.log('Class G - Yellow');
@@ -452,6 +472,8 @@
                 red = getRandomColor(255,255);
                 green = getRandomColor(165,223);
                 blue = getRandomColor(0,186);
+                className = "Class K";
+                colorName = "Orange";
                 /* RBG1 = (255, 165, 0);
                 RBG2 = (255, 223, 186);*/
                 console.log('Class K - Orange');
@@ -460,12 +482,15 @@
                 red = getRandomColor(255,255);
                 green = getRandomColor(0,69);
                 blue = getRandomColor(0,0);
+                className = "Class M";
+                colorName = "Ted";
                 /* RBG1 = (255, 0, 0);
                 RBG2 = (255, 69, 0);*/
                 console.log("Class M - Red");
           }
         s = new Star(phi, theta, luminosity);
         s.color = color(red, green, blue);
+        console.
         return s;
       }
 
