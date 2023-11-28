@@ -385,7 +385,6 @@
                       RBG2 = (255, 69, 0);*/
                       className = "Class K or M Giant";
                       colorName = "Red to Orange";
-                      console.log('Class K or M Giant Red or Orange');
                   case 6:
                       luminosity = getRandomNormal(.75, stdDev);
                       red = getRandomColor(255,255);
@@ -395,7 +394,6 @@
                       RBG2 = (255, 69, 0);*/
                       className = "Class M Supergiant";
                       colorName = "Red to Dull Red";
-                      console.log('Class M Red Supergiant Dull Red');
                   case 7: case 8:
                       luminosity = getRandomNormal(.75, stdDev);
                       red = getRandomColor(202,224);
@@ -405,7 +403,6 @@
                       colorName = "Bright Blue";
                       /* RBG1 = (202, 215, 255);
                       RBG2 = (224, 233, 255);*/
-                      console.log('Class B Blue Giant Bright Blue');
                   case 9:
                       luminosity = getRandomNormal(.75, stdDev);
                       red = getRandomColor(0,155);
@@ -415,7 +412,6 @@
                       colorName = "Bright Blue";
                       /* RBG1 = (0, 0, 255);
                       RBG2 = (155, 176, 255);*/
-                      console.log('Class O Blue Supergiant Bright Blue');
                   case 10:
                       luminosity = getRandomNormal(.25, stdDev);
                       red = getRandomColor(0,155);
@@ -425,7 +421,6 @@
                       colorName = "Deep Blue to Violet";
                       /* RBG1 = (0, 0, 255);
                       RBG2 = (155, 176, 255);*/
-                      console.log('Neutron Star deep Blue to Violet');
             }
             case 1: case 2: case 3: case 4: case 5: case 6: case 7: case 8: case 9:
                 luminosity = getRandomNormal(.25, stdDev);
@@ -436,7 +431,6 @@
                 colorName = "White to Blue-White";
                 /* RBG1 = (202, 225, 255);
                 RBG2 = (255, 255, 255);*/
-                console.log('White Dwarf');
             case 10:
                 luminosity= getRandomNormal(.5, stdDev);
                 red =  getRandomColor(202,255);
@@ -446,7 +440,6 @@
                 colorName = "Bright Blue-White";
                 /* RBG1 = (202, 215, 255);
                 RBG2 = (255, 255, 255);*/
-                console.log('Class A - Bright Blue-White');
             case 11: case 12: case 13:
                 luminosity = getRandomNormal(.5, stdDev);
                 red = getRandomColor(255,255);
@@ -456,7 +449,6 @@
                 colorName = "White";
                 /* RBG1 = (255, 249, 224);
                 RBG2 = (255, 255, 255);*/
-                console.log('Class F - White');
             case 14: case 15: case 16: case 17: case 18: case 19: case 20:
                 luminosity = getRandomNormal(.5, stdDev);
                 red = getRandomColor(255,255);
@@ -466,7 +458,6 @@
                 colorName = "Yellow";
                 /* RBG1 = (255, 255, 0);
                 RBG2 = (255, 247, 200);*/
-                console.log('Class G - Yellow');
             case 21: case 22: case 23: case 24: case 25: case 26: case 27: case 28: case 29: case 30: case 31: case 32: case 33:
                 luminosity = getRandomNormal(.5, stdDev);
                 red = getRandomColor(255,255);
@@ -476,7 +467,6 @@
                 colorName = "Orange";
                 /* RBG1 = (255, 165, 0);
                 RBG2 = (255, 223, 186);*/
-                console.log('Class K - Orange');
             default:
                 luminosity = getRandomNormal(.5, stdDev);
                 red = getRandomColor(255,255);
@@ -486,9 +476,10 @@
                 colorName = "Red";
                 /* RBG1 = (255, 0, 0);
                 RBG2 = (255, 69, 0);*/
-                console.log("Class M - Red");
           }
         s = new Star(phi, theta, luminosity);
+        s.className = className;
+        s.colorName = colorName;
         s.color = color(red, green, blue);
         return s;
       }
