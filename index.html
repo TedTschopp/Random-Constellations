@@ -385,7 +385,7 @@
         let stdDevV = 0.1;
 
         u = getRandomNormal(meanU, stdDevU);
-        v = getRandomNormal(meanV, stdDevV);
+        v = random(0.5); //0-0.5: above horizon, 0.5-1 below horizon
 
         phi = acos(2*v-1);
         theta = TWO_PI * u;
