@@ -121,7 +121,7 @@
         }
         for(let star of stars){
           noStroke();
-          fill(star.color);
+          fill(star.red, star.green, star.blue);
           circle(star.x * width / 2, star.y * height / 2, star.luminosity * LUMINOSITY_MULTIPLIER);
 
           // star.show(star.luminosity, star.color);
@@ -321,9 +321,13 @@
         this.x = cart.x;
         this.y = cart.y;
         if (INVERTED_COLOURS){
-          this.color = color(0, 0, 0);
+          this.red = 0;
+          this.green = 0;
+          this.blue = 0;
         }else{
-          this.color = color(255,255,255);
+          this.red = 255;
+          this.green = 255;
+          this.blue = 255;
         }
       }
 
@@ -481,7 +485,9 @@
         s = new Star(phi, theta, luminosity);
         s.className = className;
         s.colorName = colorName;
-        s.color = color(red, green, blue);
+        s.red = red;
+        s.green = green;
+        s.blue = blue;
         console.log(s);
         return s;
       }
