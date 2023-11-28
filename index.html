@@ -377,7 +377,7 @@
 //      v = random(0.5); //0-0.5: above horizon, 0.5-1 below horizon
 
         let slope = (v2 - v1) / (u2 - u1);
-        let intercept = v1  - slop * u1;
+        let intercept = v1  - slope * u1;
 
         let meanU = (u1+u2)/2;
         let stdDevU = Math.abs(u1-u2)/6;
