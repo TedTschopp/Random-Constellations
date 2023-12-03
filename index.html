@@ -143,6 +143,14 @@
 
       function onInput(){
         randomSeed(inpSeed.value);
+
+        // The Galactic  
+        GALACTIC_U1 = random(); 
+        GALACTIC_V1 = 0.5; //0-0.5: above horizon, 0.5-1 below horizon
+
+        GALACTIC_U2 = random();
+        GALACTIC_V2 = 0.5; //0-0.5: above horizon, 0.5-1 below horizon
+
         let constellationSeed = random(99999999999999);
         INVERTED_COLOURS = invertColours.checked;
         STARDENSITY = parseInt(starDensity.value);
@@ -365,13 +373,14 @@
           return distance(this, other);
       }
 
-      function randomStar(){
-        //select a random point uniformly across a hemisphere
-        u1 = random(); 
-        v1 = 0.5; //0-0.5: above horizon, 0.5-1 below horizon
+      function interpolate(u1, v1, u2, v2, t) {
+        let u = u1 * (1 - t) + u2 * t;
+        let v = v1 * (1 - t) + v2 * t;
+        return [u, v];
+      }
 
-        u2 = random();
-        v2 = 0.5; //0-0.5: above horizon, 0.5-1 below horizon
+
+      function randomStar(){
 
 //      u = random();
 //      v = random(0.5); //0-0.5: above horizon, 0.5-1 below horizon
@@ -379,13 +388,19 @@
 //        let slope = (v2 - v1) / (u2 - u1);
 //        let intercept = v1  - slope * u1;
 
-        let meanU = (u1+u2)/2;
-        let stdDevU = Math.abs(u1-u2)/6;
-        let meanV = 0.5
-        let stdDevV = 0.1;
+//        let t = random(); // fraction of a distance between two points 0 - 1
+//        let [u,v] = interpolate(GALACTIC_U1, GALACTIC_V1, GALACTIC_U2, GALACTIC_V2, t);
 
-        u = getRandomNormal(meanU, stdDevU);
-        v = getRandomNormal(meanV, stdDevV);
+let u = (GALACTIC_U1 + GALACTIC_U2) / 2;  // Midpoint of GALACTIC_U1 and GALACTIC_U2
+let v = (GALACTIC_V1 + GALACTIC_V2) / 2;  // Midpoint of GALACTIC_V1 and GALACTIC_V2
+
+let angle = Math.atan2(GALACTIC_V2 - GALACTIC_V1, GALACTIC_U2 - GALACTIC_U1);  // Angle of the line from GALACTIC_U1, GALACTIC_V1 to GALACTIC_U2, GALACTIC_V2
+let perpendicularAngle = angle + Math.PI / 2;  // Angle of the line perpendicular to the original line
+
+let uPerpendicular = u + Math.cos(perpendicularAngle) * getRandomNormal(0, 0.1);  // Random point away from u along the perpendicular line
+let vPerpendicular = v + Math.sin(perpendicularAngle) * getRandomNormal(0, 0.1);  // Random point away from v along the perpendicular line
+
+
 
 //        v = random(0.5); //0-0.5: above horizon, 0.5-1 below horizon
 
