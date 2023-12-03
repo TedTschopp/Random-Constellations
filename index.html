@@ -379,33 +379,31 @@
         return [u, v];
       }
 
+      function getPerpendicularPoint(u, v, GALACTIC_U1, GALACTIC_V1, GALACTIC_U2, GALACTIC_V2) {
+        let angle = Math.atan2(GALACTIC_V2 - GALACTIC_V1, GALACTIC_U2 - GALACTIC_U1);  // Angle of the line from GALACTIC_U1, GALACTIC_V1 to GALACTIC_U2, GALACTIC_V2
+        let perpendicularAngle = angle + Math.PI / 2;  // Angle of the line perpendicular to the original line
+
+        let uPerpendicular = u + Math.cos(perpendicularAngle) * getRandomNormal(0, 0.1);  // Random point away from u along the perpendicular line
+        let vPerpendicular = v + Math.sin(perpendicularAngle) * getRandomNormal(0, 0.1);  // Random point away from v along the perpendicular line
+
+        return [uPerpendicular, vPerpendicular];
+      }
+
 
       function randomStar(){
+        let t = random(); // fraction of a distance between two points 0 - 1
+        let [u,v] = interpolate(GALACTIC_U1, GALACTIC_V1, GALACTIC_U2, GALACTIC_V2, t);
 
-//      u = random();
-//      v = random(0.5); //0-0.5: above horizon, 0.5-1 below horizon
+        let [uPerpendicular, vPerpendicular] = getPerpendicularPoint(u, v, GALACTIC_U1, GALACTIC_V1, GALACTIC_U2, GALACTIC_V2);
 
-//        let slope = (v2 - v1) / (u2 - u1);
-//        let intercept = v1  - slope * u1;
-
-//        let t = random(); // fraction of a distance between two points 0 - 1
-//        let [u,v] = interpolate(GALACTIC_U1, GALACTIC_V1, GALACTIC_U2, GALACTIC_V2, t);
-
-let u = (GALACTIC_U1 + GALACTIC_U2) / 2;  // Midpoint of GALACTIC_U1 and GALACTIC_U2
-let v = (GALACTIC_V1 + GALACTIC_V2) / 2;  // Midpoint of GALACTIC_V1 and GALACTIC_V2
-
-let angle = Math.atan2(GALACTIC_V2 - GALACTIC_V1, GALACTIC_U2 - GALACTIC_U1);  // Angle of the line from GALACTIC_U1, GALACTIC_V1 to GALACTIC_U2, GALACTIC_V2
-let perpendicularAngle = angle + Math.PI / 2;  // Angle of the line perpendicular to the original line
-
-let uPerpendicular = u + Math.cos(perpendicularAngle) * getRandomNormal(0, 0.1);  // Random point away from u along the perpendicular line
-let vPerpendicular = v + Math.sin(perpendicularAngle) * getRandomNormal(0, 0.1);  // Random point away from v along the perpendicular line
+        let phi = acos(2*vPerpendicular-1);
+        let theta = TWO_PI * uPerpendicular;
 
 
-
+//  The original Code
 //        v = random(0.5); //0-0.5: above horizon, 0.5-1 below horizon
-
-        phi = acos(2*v-1);
-        theta = TWO_PI * u;
+//        phi = acos(2*v-1);
+//        theta = TWO_PI * u;
         var stdDev = 0.0825;
         var red
         var green
