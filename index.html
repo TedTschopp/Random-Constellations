@@ -367,17 +367,17 @@
 
       function randomStar(){
         //select a random point uniformly across a hemisphere
-        u1 = random();
-        v1 = 0.5;
+        u1 = random(); 
+        v1 = 0.5; //0-0.5: above horizon, 0.5-1 below horizon
 
         u2 = random();
-        v2 = 0.5;
+        v2 = 0.5; //0-0.5: above horizon, 0.5-1 below horizon
 
 //      u = random();
 //      v = random(0.5); //0-0.5: above horizon, 0.5-1 below horizon
 
-        let slope = (v2 - v1) / (u2 - u1);
-        let intercept = v1  - slope * u1;
+//        let slope = (v2 - v1) / (u2 - u1);
+//        let intercept = v1  - slope * u1;
 
         let meanU = (u1+u2)/2;
         let stdDevU = Math.abs(u1-u2)/6;
@@ -385,7 +385,9 @@
         let stdDevV = 0.1;
 
         u = getRandomNormal(meanU, stdDevU);
-        v = random(0.5); //0-0.5: above horizon, 0.5-1 below horizon
+        v = getRandomNormal(meanV, stdDevV);
+
+//        v = random(0.5); //0-0.5: above horizon, 0.5-1 below horizon
 
         phi = acos(2*v-1);
         theta = TWO_PI * u;
@@ -403,8 +405,6 @@
               red = getRandomColor(255,255);
               green = getRandomColor(0,69);
               blue = getRandomColor(0,0);
-              /* RBG1 = (255, 0, 0); 
-              RBG2 = (255, 69, 0);*/
               className = "Class K or M Giant";
               colorName = "Red to Orange";
             } else if (specialCode === 6) {
@@ -412,8 +412,6 @@
               red = getRandomColor(255,255);
               green = getRandomColor(0,69);
               blue = getRandomColor(0,0);
-              /* RBG1 = (255, 0, 0);
-              RBG2 = (255, 69, 0);*/
               className = "Class M Supergiant";
               colorName = "Red to Dull Red";
             } else if (specialCode === 7 || specialCode === 8) {
@@ -423,8 +421,6 @@
               blue = getRandomColor(255,255);
               className = "Class B Giant";
               colorName = "Bright Blue";
-              /* RBG1 = (202, 215, 255);
-              RBG2 = (224, 233, 255);*/
             } else if (specialCode === 9) {
               luminosity = getRandomNormal(.75, stdDev);
               red = getRandomColor(0,155);
@@ -432,8 +428,6 @@
               blue = getRandomColor(255,255);
               className = "Class O Supergiant";
               colorName = "Bright Blue";
-              /* RBG1 = (0, 0, 255);
-              RBG2 = (155, 176, 255);*/
             } else if (specialCode === 10) {
               luminosity = getRandomNormal(.25, stdDev);
               red = getRandomColor(0,155);
@@ -441,8 +435,6 @@
               blue = getRandomColor(255,255);
               className = "Neutron Star";
               colorName = "Deep Blue to Violet";
-              /* RBG1 = (0, 0, 255);
-              RBG2 = (155, 176, 255);*/
             }
         } else if (code >= 1 && code <= 9) {
           luminosity = getRandomNormal(.25, stdDev);
@@ -451,8 +443,6 @@
           blue = getRandomColor(255,255);
           className = "White Dwarf";
           colorName = "White to Blue-White";
-          /* RBG1 = (202, 225, 255);
-          RBG2 = (255, 255, 255);*/
         } else if (code === 10) {
           luminosity= getRandomNormal(.5, stdDev);
           red =  getRandomColor(202,255);
@@ -460,8 +450,6 @@
           blue = getRandomColor(255,255);
           className = "Class A";
           colorName = "Bright Blue-White";
-          /* RBG1 = (202, 215, 255);
-          RBG2 = (255, 255, 255);*/
         } else if (code >= 11 && code <= 13) {
           luminosity = getRandomNormal(.5, stdDev);
           red = getRandomColor(255,255);
@@ -469,8 +457,6 @@
           blue = getRandomColor(224,255);
           className = "Class F";
           colorName = "White";
-          /* RBG1 = (255, 249, 224);
-          RBG2 = (255, 255, 255);*/
         } else if (code >= 14 && code <= 20) {
           luminosity = getRandomNormal(.5, stdDev);
           red = getRandomColor(255,255);
@@ -478,8 +464,6 @@
           blue = getRandomColor(0,200);
           className = "Class G";
           colorName = "Yellow";
-          /* RBG1 = (255, 255, 0);
-          RBG2 = (255, 247, 200);*/
         } else if (code >= 21 && code <= 33) {
           luminosity = getRandomNormal(.5, stdDev);
           red = getRandomColor(255,255);
@@ -487,8 +471,6 @@
           blue = getRandomColor(0,186);
           className = "Class K";
           colorName = "Orange";
-          /* RBG1 = (255, 165, 0);
-          RBG2 = (255, 223, 186);*/
         } else {
           luminosity = getRandomNormal(.5, stdDev);
           red = getRandomColor(255,255);
@@ -496,8 +478,6 @@
           blue = getRandomColor(0,0);
           className = "Class M";
           colorName = "Red";
-          /* RBG1 = (255, 0, 0);
-          RBG2 = (255, 69, 0);*/
         }
 
         s = new Star(phi, theta, luminosity);
